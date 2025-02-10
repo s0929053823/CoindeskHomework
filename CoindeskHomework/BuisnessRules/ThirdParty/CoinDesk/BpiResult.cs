@@ -1,4 +1,4 @@
-﻿namespace CoindeskHomework.BuisnessRules
+﻿namespace CoindeskHomework.BuisnessRules.ThirdParty.CoinDesk
 {
 
     public class BpiResult

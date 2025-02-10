@@ -1,3 +1,5 @@
+﻿using CoindeskHomework.BuisnessRules.Common;
+using CoindeskHomework.BuisnessRules.ThirdParty.CoinDesk;
 using CoindeskHomework.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +15,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettings"));
+
+
+builder.Services.AddHttpClient<CoinDeskService>();
+builder.Services.AddScoped<CoinDeskService>();
 
 var app = builder.Build();
 
