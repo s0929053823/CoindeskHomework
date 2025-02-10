@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoindeskHomework", "CoindeskHomework.csproj", "{7177AAE8-0B61-42E5-A955-5992AFFF98A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoindeskHomework_Test", "..\CoindeskHomework_Test\CoindeskHomework_Test.csproj", "{560D11F3-DB28-4379-B85B-6587A39AFC6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7177AAE8-0B61-42E5-A955-5992AFFF98A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7177AAE8-0B61-42E5-A955-5992AFFF98A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7177AAE8-0B61-42E5-A955-5992AFFF98A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{560D11F3-DB28-4379-B85B-6587A39AFC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{560D11F3-DB28-4379-B85B-6587A39AFC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{560D11F3-DB28-4379-B85B-6587A39AFC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{560D11F3-DB28-4379-B85B-6587A39AFC6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
