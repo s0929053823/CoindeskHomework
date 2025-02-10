@@ -45,9 +45,10 @@ namespace CoindeskHomework_Test.BuisnessRules
             // Act
             var result = await coinDeskService.GetCurrencyInfoAsync();
 
+            var usdRate = result.bpi["USD"].rate;
             // Assert
             Assert.NotNull(result);
-            Assert.Equal("50000.00", result.bpi.USD.rate); 
+            Assert.Equal("50000.00", usdRate); 
 
         }
 
@@ -155,10 +156,10 @@ namespace CoindeskHomework_Test.BuisnessRules
 
             // Act
             var result = await coinDeskService.GetCurrencyInfoAsync();
-
+            var usdRate = result.bpi["USD"].rate;
             // Assert
             Assert.NotNull(result);
-            Assert.NotEqual("50000.00", result.bpi.USD.rate);
+            Assert.NotEqual("50000.00", usdRate);
 
         }
     }
