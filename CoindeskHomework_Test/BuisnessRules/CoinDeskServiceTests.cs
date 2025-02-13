@@ -64,7 +64,7 @@ namespace CoindeskHomework_Test.BuisnessRules
             mockApiSettings.Setup(x => x.Value).Returns(apiSettings);
 
             var mockHandler = new Mock<HttpMessageHandler>();
-            // 模擬 API 呼叫失敗
+   
             mockHandler
                 .Protected()
                 .Setup<Task<HttpResponseMessage>>(
@@ -93,7 +93,7 @@ namespace CoindeskHomework_Test.BuisnessRules
             // Arrange
             var mockHandler = new Mock<HttpMessageHandler>();
 
-            // 設定 mock 的 HttpMessageHandler，當發送請求時返回我們定義的回應
+
             mockHandler
                 .Protected()
                 .Setup<Task<HttpResponseMessage>>(

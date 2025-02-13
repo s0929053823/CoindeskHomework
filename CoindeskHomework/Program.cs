@@ -23,8 +23,8 @@ builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSet
 builder.Services.AddHttpClient<CoinDeskService>();
 builder.Services.AddScoped<CoinDeskService>();
 
-builder.Services.AddScoped<CurrencyService>();
-builder.Services.AddScoped<CurrencyRateService>();
+builder.Services.AddScoped<ICurrencyService,CurrencyService>();
+builder.Services.AddScoped<ICurrencyRateService, CurrencyRateService>();
 
 var app = builder.Build();
 

@@ -7,11 +7,11 @@ using System.Collections;
 
 namespace CoindeskHomework.BuisnessRules.CurrencyRule
 {
-    public class CurrencyRateService : BaseService
+    public class CurrencyRateService : BaseService, ICurrencyRateService
     {
         public CurrencyRateService(ApplicationDbContext context) : base(context)
         {
-            
+
         }
 
         public async Task<IEnumerable<CurrencyRate>> GetRates(string currencyCode)
@@ -22,7 +22,7 @@ namespace CoindeskHomework.BuisnessRules.CurrencyRule
                 .ToListAsync();
 
             return rates;
-                    
+
         }
 
     }

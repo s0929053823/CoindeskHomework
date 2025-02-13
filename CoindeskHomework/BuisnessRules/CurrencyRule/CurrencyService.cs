@@ -7,7 +7,7 @@ using System;
 namespace CoindeskHomework.BuisnessRules.CurrencyRule
 {
 
-    public class CurrencyService : BaseService
+    public class CurrencyService : BaseService, ICurrencyService
     {
         public CurrencyService(ApplicationDbContext context) : base(context)
         {
@@ -21,13 +21,13 @@ namespace CoindeskHomework.BuisnessRules.CurrencyRule
                 .ToListAsync();
         }
 
- 
+
         public async Task<Currency?> GetCurrencyByIdAsync(int id)
         {
             return await _context.Currencies.FindAsync(id);
         }
 
-   
+
         public async Task<Currency> AddCurrencyAsync(AddCurrencyDto currency)
         {
             var newCurrency = new Currency
@@ -48,7 +48,7 @@ namespace CoindeskHomework.BuisnessRules.CurrencyRule
             var existingCurrency = await _context.Currencies.FindAsync(id);
             if (existingCurrency == null)
                 return false;
-      
+
             existingCurrency.ChineseName = updatedCurrency.ChineseName;
             existingCurrency.Description = updatedCurrency.Description;
             existingCurrency.Symbol = updatedCurrency.Symbol;

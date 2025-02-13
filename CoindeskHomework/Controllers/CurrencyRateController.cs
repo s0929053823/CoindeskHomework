@@ -1,9 +1,6 @@
 ﻿using CoindeskHomework.BuisnessRules.CurrencyRule;
-using CoindeskHomework.Data;
 using CoindeskHomework.Data.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace CoindeskHomework.Controllers
 {
