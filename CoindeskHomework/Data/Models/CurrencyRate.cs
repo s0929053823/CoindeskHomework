@@ -13,7 +13,7 @@ namespace CoindeskHomework.Data.Models
         public int CurrencyId { get; set; } 
 
         [ForeignKey("CurrencyId")]
-        public required Currency Currency { get; set; }
+        public Currency Currency { get; set; }
 
         [Required]
         public float Rate { get; set; } 

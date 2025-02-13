@@ -1,4 +1,5 @@
-﻿using CoindeskHomework.BuisnessRules.Common;
+﻿using CoindeskHomework.BuisnessRules.CoinDesk;
+using CoindeskHomework.BuisnessRules.Common;
 using CoindeskHomework.BuisnessRules.CurrencyRule;
 using CoindeskHomework.BuisnessRules.ThirdParty.CoinDesk;
 using CoindeskHomework.Data;
@@ -21,10 +22,11 @@ builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSet
 
 
 builder.Services.AddHttpClient<CoinDeskService>();
-builder.Services.AddScoped<ICoinDeskService,FakeCoinDeskService>();
+builder.Services.AddScoped<ICoinDeskService, FakeCoinDeskService>();
 
-builder.Services.AddScoped<ICurrencyService,CurrencyService>();
+builder.Services.AddScoped<ICurrencyService, CurrencyService>();
 builder.Services.AddScoped<ICurrencyRateService, CurrencyRateService>();
+builder.Services.AddScoped<ICoinDeskImportService, CoinDeskImportService>();
 
 var app = builder.Build();
 

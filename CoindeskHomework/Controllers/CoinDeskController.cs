@@ -1,4 +1,5 @@
-﻿using CoindeskHomework.BuisnessRules.ThirdParty.CoinDesk;
+﻿using CoindeskHomework.BuisnessRules.CoinDesk;
+using CoindeskHomework.BuisnessRules.ThirdParty.CoinDesk;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoindeskHomework.Controllers
@@ -13,7 +14,7 @@ namespace CoindeskHomework.Controllers
             _coinDeskService = coinDeskService;
         }
 
-        // 取得 Coindesk API 解析後的所有幣別資訊
+      
         [HttpGet]
         public async Task<IActionResult> GetCurrencyInfo()
         {
@@ -25,6 +26,22 @@ namespace CoindeskHomework.Controllers
             catch (Exception ex)
             {
                 // 捕捉到錯誤後回傳 BadRequest 以及錯誤訊息
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ImportCoinDeskToDatabase([FromServices] ICoinDeskImportService coinDeskImportService)
+        {
+            try
+            {
+                var bpiResult = await _coinDeskService.GetCurrencyInfoAsync();
+                await coinDeskImportService.Import(bpiResult);
+                return Ok(); 
+            }
+            catch (Exception ex)
+            {
                 return BadRequest(new { message = ex.Message });
             }
         }
