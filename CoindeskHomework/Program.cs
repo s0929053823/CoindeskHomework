@@ -29,7 +29,10 @@ builder.Services.AddScoped<ICurrencyService, CurrencyService>();
 builder.Services.AddScoped<ICurrencyRateService, CurrencyRateService>();
 builder.Services.AddScoped<ICoinDeskImportService, CoinDeskImportService>();
 
-
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ApiExceptionFilter>();
+});
 
 
 var app = builder.Build();

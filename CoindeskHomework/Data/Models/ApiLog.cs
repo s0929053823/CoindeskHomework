@@ -17,8 +17,8 @@ namespace CoindeskHomework.Data.Models
         
         public int ExecutionSeconds { get; set; }   
 
-        public DateTime Timestamp { get; set; } 
-
+        public DateTime Timestamp { get; set; }
+        public string? ExceptionMessage { get;  set; }
     }
 
 }
