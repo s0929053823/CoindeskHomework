@@ -53,7 +53,7 @@ namespace CoindeskHomework.BuisnessRules.CoinDesk
                 _context.CurrencyRate.Add(currencyRate);
             }
 
-            // 4. 儲存所有變更
+           
             await _context.SaveChangesAsync();
 
         }

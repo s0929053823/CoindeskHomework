@@ -3,6 +3,7 @@ using CoindeskHomework.BuisnessRules.Common;
 using CoindeskHomework.BuisnessRules.CurrencyRule;
 using CoindeskHomework.BuisnessRules.ThirdParty.CoinDesk;
 using CoindeskHomework.Data;
+using CoindeskHomework.Filters;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +28,9 @@ builder.Services.AddScoped<ICoinDeskService, FakeCoinDeskService>();
 builder.Services.AddScoped<ICurrencyService, CurrencyService>();
 builder.Services.AddScoped<ICurrencyRateService, CurrencyRateService>();
 builder.Services.AddScoped<ICoinDeskImportService, CoinDeskImportService>();
+
+
+
 
 var app = builder.Build();
 

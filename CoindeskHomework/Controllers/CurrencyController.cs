@@ -6,9 +6,9 @@ namespace CoindeskHomework.Controllers
 {
     public class CurrencyController : BaseApiController
     {
-        private readonly CurrencyService _currencyService;
+        private readonly ICurrencyService _currencyService;
 
-        public CurrencyController(CurrencyService currencyService)
+        public CurrencyController(ICurrencyService currencyService)
         {
             _currencyService = currencyService;
         }
