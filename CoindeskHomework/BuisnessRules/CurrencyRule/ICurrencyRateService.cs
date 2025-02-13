@@ -4,6 +4,6 @@ namespace CoindeskHomework.BuisnessRules.CurrencyRule
 {
     public interface ICurrencyRateService
     {
-        Task<IEnumerable<CurrencyRate>> GetRates(string currencyCode);
+        Task<IEnumerable<CurrencyRateDto>> GetRates(string currencyCode);
     }
 }

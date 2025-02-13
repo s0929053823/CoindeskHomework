@@ -16,25 +16,20 @@ namespace CoindeskHomework.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetCurrencyInfo()
+        public async Task<BpiResult> GetCurrencyInfo()
         {
 
             var bpiResult = await _coinDeskService.GetCurrencyInfoAsync();
-            throw new NotImplementedException(); // 這裡應該要回傳 bpiResult
-            return Ok(bpiResult); // 回傳整個 BpiResult
-
+            return bpiResult;
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> ImportCoinDeskToDatabase([FromServices] ICoinDeskImportService coinDeskImportService)
+        public async Task ImportCoinDeskToDatabase([FromServices] ICoinDeskImportService coinDeskImportService)
         {
 
             var bpiResult = await _coinDeskService.GetCurrencyInfoAsync();
             await coinDeskImportService.Import(bpiResult);
-            return Ok();
-
-
         }
     }
 

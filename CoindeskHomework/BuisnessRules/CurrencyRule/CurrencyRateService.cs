@@ -14,15 +14,19 @@ namespace CoindeskHomework.BuisnessRules.CurrencyRule
 
         }
 
-        public async Task<IEnumerable<CurrencyRate>> GetRates(string currencyCode)
+        public async Task<IEnumerable<CurrencyRateDto>> GetRates(string currencyCode)
         {
             var rates = await _context.CurrencyRate
                 .Where(cr => cr.Currency.CurrencyCode == currencyCode)
                 .OrderByDescending(cr => cr.UpdatedAt)
-                .ToListAsync();
+             .Select(x => new CurrencyRateDto
+             {
+                 Currency = x.Currency.CurrencyCode,
+                 Rate = x.Rate,
+                 UpdatedAt = x.UpdatedAt
+             }).ToListAsync();
 
             return rates;
-
         }
 
     }

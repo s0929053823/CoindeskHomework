@@ -1,4 +1,5 @@
 ﻿using CoindeskHomework.BuisnessRules.Common;
+using CoindeskHomework.Common;
 using CoindeskHomework.Data;
 using CoindeskHomework.Data.Models;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,11 @@ namespace CoindeskHomework.BuisnessRules.CurrencyRule
 
         public async Task<Currency?> GetCurrencyByIdAsync(int id)
         {
-            return await _context.Currencies.FindAsync(id);
+
+            var currency =  await _context.Currencies.FindAsync(id);
+            if (currency == null)
+                throw new NotFoundException("幣別不存在");
+            return currency;
         }
 
 
@@ -47,7 +52,8 @@ namespace CoindeskHomework.BuisnessRules.CurrencyRule
         {
             var existingCurrency = await _context.Currencies.FindAsync(id);
             if (existingCurrency == null)
-                return false;
+                throw new NotFoundException("幣別不存在"); 
+
 
             existingCurrency.ChineseName = updatedCurrency.ChineseName;
             existingCurrency.Description = updatedCurrency.Description;
@@ -61,7 +67,7 @@ namespace CoindeskHomework.BuisnessRules.CurrencyRule
         {
             var currency = await _context.Currencies.FindAsync(id);
             if (currency == null)
-                return false;
+                throw new NotFoundException("幣別不存在");
 
             _context.Currencies.Remove(currency);
             await _context.SaveChangesAsync();

@@ -23,43 +23,34 @@ namespace CoindeskHomework.Controllers
 
     
         [HttpGet("{id}")]
-        public async Task<ActionResult<Currency>> GetCurrency(int id)
+        public async Task<Currency> GetCurrency(int id)
         {
             var currency = await _currencyService.GetCurrencyByIdAsync(id);
-            if (currency == null)
-                return NotFound("幣別不存在");
 
-            return Ok(currency);
+            return currency;
         }
 
        
         [HttpPost]
-        public async Task<ActionResult<Currency>> CreateCurrency([FromBody] AddCurrencyDto currency)
+        public async Task<Currency> CreateCurrency([FromBody] AddCurrencyDto currency)
         {
             var createdCurrency = await _currencyService.AddCurrencyAsync(currency);
-            return CreatedAtAction(nameof(GetCurrency), new { id = createdCurrency.Id }, createdCurrency);
+            return createdCurrency;
         }
 
    
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateCurrency(int id, [FromBody] UpdateCurrencyDto updatedCurrency)
+        public async Task UpdateCurrency(int id, [FromBody] UpdateCurrencyDto updatedCurrency)
         {
-            var success = await _currencyService.UpdateCurrencyAsync(id, updatedCurrency);
-            if (!success)
-                return NotFound("幣別不存在");
-
-            return NoContent();
+           await _currencyService.UpdateCurrencyAsync(id, updatedCurrency);
+           
         }
 
    
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteCurrency(int id)
+        public async Task DeleteCurrency(int id)
         {
-            var success = await _currencyService.DeleteCurrencyAsync(id);
-            if (!success)
-                return NotFound("幣別不存在");
-
-            return NoContent();
+           await _currencyService.DeleteCurrencyAsync(id);
         }
     }
 }

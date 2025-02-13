@@ -7,23 +7,19 @@ namespace CoindeskHomework.Controllers
 
     public class CurrencyRateController : BaseApiController
     {
-        private readonly CurrencyRateService _currencyRateService;
+        private readonly ICurrencyRateService _currencyRateService;
 
-        public CurrencyRateController(CurrencyRateService currencyRateService)
+        public CurrencyRateController(ICurrencyRateService currencyRateService)
         {
             _currencyRateService = currencyRateService;
         }
 
 
         [HttpGet("rate/{currencyCode}")]
-        public async Task<ActionResult<List<CurrencyRate>>> GetRates(string currencyCode)
+        public async Task<List<CurrencyRateDto>> GetRates(string currencyCode)
         {
             var rates = (await _currencyRateService.GetRates(currencyCode)).ToList() ;
-
-            if (rates == null)
-                return NotFound("找不到該幣別的匯率");
-
-            return Ok(rates);
+            return rates;
         }
     }
 }
