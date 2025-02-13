@@ -1,4 +1,5 @@
 ﻿using CoindeskHomework.BuisnessRules.Common;
+using CoindeskHomework.BuisnessRules.CurrencyRule;
 using CoindeskHomework.BuisnessRules.ThirdParty.CoinDesk;
 using CoindeskHomework.Data;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,8 @@ builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSet
 
 builder.Services.AddHttpClient<CoinDeskService>();
 builder.Services.AddScoped<CoinDeskService>();
+
+builder.Services.AddScoped<CurrencyService>();
 
 var app = builder.Build();
 

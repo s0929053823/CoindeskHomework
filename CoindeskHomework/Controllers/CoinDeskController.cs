@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoindeskHomework.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CoinDeskController : ControllerBase
+
+    public class CoinDeskController : BaseApiController
     {
         private readonly CoinDeskService _coinDeskService;
 
