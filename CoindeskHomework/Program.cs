@@ -24,6 +24,7 @@ builder.Services.AddHttpClient<CoinDeskService>();
 builder.Services.AddScoped<CoinDeskService>();
 
 builder.Services.AddScoped<CurrencyService>();
+builder.Services.AddScoped<CurrencyRateService>();
 
 var app = builder.Build();
 

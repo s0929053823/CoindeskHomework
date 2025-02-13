@@ -13,6 +13,6 @@ namespace CoindeskHomework.Data
 
         public DbSet<Currency> Currencies { get; set; }
 
-        public DbSet<CurrencyRate> CurrencyRates { get; set; }
+        public DbSet<CurrencyRate> CurrencyRate { get; set; }
     }
 }

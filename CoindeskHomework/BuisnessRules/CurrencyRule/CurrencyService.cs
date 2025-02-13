@@ -1,4 +1,5 @@
-﻿using CoindeskHomework.Data;
+﻿using CoindeskHomework.BuisnessRules.Common;
+using CoindeskHomework.Data;
 using CoindeskHomework.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -6,13 +7,10 @@ using System;
 namespace CoindeskHomework.BuisnessRules.CurrencyRule
 {
 
-    public class CurrencyService
+    public class CurrencyService : BaseService
     {
-        private readonly ApplicationDbContext _context;
-
-        public CurrencyService(ApplicationDbContext context)
+        public CurrencyService(ApplicationDbContext context) : base(context)
         {
-            _context = context;
         }
 
 
