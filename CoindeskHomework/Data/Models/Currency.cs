@@ -21,5 +21,6 @@ namespace CoindeskHomework.Data.Models
         [MaxLength (50)]
         public string? Symbol { get; set; }
 
+        public List<CurrencyRate> CurrencyRates { get; set; } = new();
     }
 }
