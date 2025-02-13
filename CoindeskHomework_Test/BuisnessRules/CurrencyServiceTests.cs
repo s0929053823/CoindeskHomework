@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoindeskHomework.Common;
 
 namespace CoindeskHomework_Test.BuisnessRules
 {
@@ -65,6 +66,18 @@ namespace CoindeskHomework_Test.BuisnessRules
             Assert.Equal(2, result.Count());
         }
 
+
+        [Fact]
+        public async Task GetCurrencyByIdAsync_ShouldThrowNotFoundException_WhenCurrencyNotFound()
+        {
+            // Arrange
+            var nonExistingId = 999;
+
+            // Act & Assert
+            await Assert.ThrowsAsync<NotFoundException>(() => _currencyService.GetCurrencyByIdAsync(nonExistingId));
+        }
+
+
         [Fact]
         public async Task GetCurrencyByIdAsync_ShouldReturnCorrectCurrency()
         {
@@ -105,6 +118,23 @@ namespace CoindeskHomework_Test.BuisnessRules
             Assert.Equal("英鎊更新", updated?.ChineseName);
         }
 
+
+        [Fact]
+        public async Task UpdateCurrencyAsync_ShouldThrowNotFoundException_WhenCurrencyNotFound()
+        {
+            // Arrange
+            var nonExistingId = 999;
+            var updateDto = new UpdateCurrencyDto
+            {
+                ChineseName = "新名稱",
+                Description = "新描述",
+                Symbol = "$"
+            };
+
+            // Act & Assert
+            await Assert.ThrowsAsync<NotFoundException>(() => _currencyService.UpdateCurrencyAsync(nonExistingId, updateDto));
+        }
+
         [Fact]
         public async Task DeleteCurrencyAsync_ShouldRemoveCurrency()
         {
@@ -120,6 +150,17 @@ namespace CoindeskHomework_Test.BuisnessRules
             // Assert
             Assert.True(result);
             Assert.Null(deleted);
+        }
+
+        [Fact]
+        public async Task DeleteCurrencyAsync_ShouldThrowNotFoundException_WhenCurrencyNotFound()
+        {
+            // Arrange
+            var nonExistingId = 999;
+
+        
+            // Act & Assert
+            await Assert.ThrowsAsync<NotFoundException>(() => _currencyService.DeleteCurrencyAsync(nonExistingId));
         }
     }
 }
