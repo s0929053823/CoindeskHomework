@@ -16,11 +16,11 @@ namespace CoindeskHomework.Controllers
 
 
         [HttpGet]
-        public async Task<BpiResult> GetCurrencyInfo()
+        public async Task<List<CurrencyInfoViewModel>> GetCurrencyInfo([FromServices] IBpiResultConvertService bpiResultConvertService)
         {
-
             var bpiResult = await _coinDeskService.GetCurrencyInfoAsync();
-            return bpiResult;
+
+            return await bpiResultConvertService.Convert(bpiResult);
         }
 
 

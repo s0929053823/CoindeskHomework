@@ -28,6 +28,7 @@ builder.Services.AddScoped<ICoinDeskService, FakeCoinDeskService>();
 builder.Services.AddScoped<ICurrencyService, CurrencyService>();
 builder.Services.AddScoped<ICurrencyRateService, CurrencyRateService>();
 builder.Services.AddScoped<ICoinDeskImportService, CoinDeskImportService>();
+builder.Services.AddScoped<IBpiResultConvertService, BpiResultConvertService>();
 
 builder.Services.AddControllers(options =>
 {
