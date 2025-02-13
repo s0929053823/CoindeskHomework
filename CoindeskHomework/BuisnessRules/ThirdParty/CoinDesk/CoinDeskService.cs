@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace CoindeskHomework.BuisnessRules.ThirdParty.CoinDesk
 {
-    public class CoinDeskService
+    public class CoinDeskService : ICoinDeskService
     {
         private readonly HttpClient _httpClient;
         private readonly string _coinDeskUrl;
@@ -12,7 +12,7 @@ namespace CoindeskHomework.BuisnessRules.ThirdParty.CoinDesk
         public CoinDeskService(HttpClient httpClient, IOptions<ApiSettings> apiSettings)
         {
             _httpClient = httpClient;
-            _coinDeskUrl = apiSettings.Value.CoindeskApiUrl; 
+            _coinDeskUrl = apiSettings.Value.CoindeskApiUrl;
         }
         public async Task<BpiResult?> GetCurrencyInfoAsync()
         {

@@ -6,9 +6,9 @@ namespace CoindeskHomework.Controllers
 
     public class CoinDeskController : BaseApiController
     {
-        private readonly CoinDeskService _coinDeskService;
+        private readonly ICoinDeskService _coinDeskService;
 
-        public CoinDeskController(CoinDeskService coinDeskService)
+        public CoinDeskController(ICoinDeskService coinDeskService)
         {
             _coinDeskService = coinDeskService;
         }

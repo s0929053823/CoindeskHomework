@@ -21,7 +21,7 @@ builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSet
 
 
 builder.Services.AddHttpClient<CoinDeskService>();
-builder.Services.AddScoped<CoinDeskService>();
+builder.Services.AddScoped<ICoinDeskService,FakeCoinDeskService>();
 
 builder.Services.AddScoped<ICurrencyService,CurrencyService>();
 builder.Services.AddScoped<ICurrencyRateService, CurrencyRateService>();
