@@ -2,9 +2,11 @@
 using CoindeskHomework.BuisnessRules.Common;
 using CoindeskHomework.BuisnessRules.CurrencyRule;
 using CoindeskHomework.BuisnessRules.ThirdParty.CoinDesk;
+using CoindeskHomework.Controllers.Filters;
 using CoindeskHomework.Data;
-using CoindeskHomework.Filters;
+using CoindeskHomework.Middlewares;
 using Microsoft.EntityFrameworkCore;
+using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,11 +31,15 @@ builder.Services.AddScoped<ICurrencyService, CurrencyService>();
 builder.Services.AddScoped<ICurrencyRateService, CurrencyRateService>();
 builder.Services.AddScoped<ICoinDeskImportService, CoinDeskImportService>();
 builder.Services.AddScoped<IBpiResultConvertService, BpiResultConvertService>();
-
+   
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<ApiExceptionFilter>();
 });
+
+builder.Logging.ClearProviders();
+builder.Logging.AddNLog("NLog/nlog.config");
+builder.Host.UseNLog();
 
 
 var app = builder.Build();
@@ -45,9 +51,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
 
 app.MapControllers();
 

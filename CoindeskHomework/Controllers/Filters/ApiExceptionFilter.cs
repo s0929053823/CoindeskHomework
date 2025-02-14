@@ -5,15 +5,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 
-namespace CoindeskHomework.Filters
+namespace CoindeskHomework.Controllers.Filters
 {
     public class ApiExceptionFilter : IExceptionFilter
     {
-        private readonly ApplicationDbContext  _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
         public ApiExceptionFilter(ApplicationDbContext applicationDbContext)
         {
-            _dbContext = applicationDbContext;   
+            _dbContext = applicationDbContext;
         }
 
         public void OnException(ExceptionContext context)
@@ -33,7 +33,7 @@ namespace CoindeskHomework.Filters
             _dbContext.ApiLogs.Add(log);
             _dbContext.SaveChanges();
 
-          
+
             var errorResponse = new
             {
                 message = "An unexpected error occurred.",

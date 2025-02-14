@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Text.Json;
 using System.Text;
 
-namespace CoindeskHomework.Filters
+namespace CoindeskHomework.Controllers.Filters
 {
     public class ApiLoggingFilter : IAsyncActionFilter
     {
@@ -16,7 +16,7 @@ namespace CoindeskHomework.Filters
         public ApiLoggingFilter(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
-           
+
         }
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
@@ -25,9 +25,9 @@ namespace CoindeskHomework.Filters
             var requestBody = await ReadRequestBodyAsync(request);
             var requestHeaders = JsonSerializer.Serialize(request.Headers.ToDictionary(h => h.Key, h => h.Value.ToString()));
 
-            var stopwatch = Stopwatch.StartNew(); 
-            var executedContext = await next();  
-            stopwatch.Stop();                     
+            var stopwatch = Stopwatch.StartNew();
+            var executedContext = await next();
+            stopwatch.Stop();
 
             var response = executedContext.HttpContext.Response;
             var responseBody = await ReadResponseBodyAsync(response);
@@ -58,7 +58,7 @@ namespace CoindeskHomework.Filters
             request.EnableBuffering();
             using var reader = new StreamReader(request.Body, Encoding.UTF8, leaveOpen: true);
             var body = await reader.ReadToEndAsync();
-            request.Body.Position = 0; 
+            request.Body.Position = 0;
             return body;
         }
 

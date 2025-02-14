@@ -1,4 +1,4 @@
-﻿using CoindeskHomework.Filters;
+﻿using CoindeskHomework.Controllers.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoindeskHomework.Controllers
